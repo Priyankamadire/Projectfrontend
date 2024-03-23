@@ -36,3 +36,115 @@
     transform: rotate(360deg);
   }
 }
+nav{
+  background-color: rgba(20, 1, 129, 0.768); 
+  overflow: hidden;
+ 
+}
+body{
+  
+  background-image: url('https://img.freepik.com/free-vector/abstract-watercolor-pastel-background_87374-139.jpg?w=2000');
+ 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  }
+  /* .notfound{
+    background-image: url('https://img.freepik.com/free-vector/page-error-404-background_3338-15.jpg?size=338c&ext=jpg');
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  } */
+.container {
+  display: flex;
+  align-items: center;
+  
+}
+
+img {
+  max-width: 100%
+}
+
+.image {
+  flex-basis: 40%
+}
+.text {
+  font-size: 20px;
+  padding-left: 10px;
+}
+tbody{
+    text-align: left;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  
+}
+a{
+    text-decoration: none;
+}
+table{
+  border: 2px solid rgb(35, 32, 32);
+  color: black;
+  width:500px;
+ 
+}
+th{
+  border: 2px solid rgb(35, 32, 32);
+  color: black;
+
+}
+td{
+    border: 2px solid rgb(35, 32, 32);
+}
+
+img {
+  max-width: 100%
+}
+
+.image {
+  flex-basis: 40%
+}
+.text {
+  font-size: 20px;
+  padding-left: 10px;
+}
+tbody{
+    text-align: left;
+}
+
+
+  th{
+    border: 2px solid rgb(35, 32, 32);
+    color: black;
+  
+  }
+  td{
+      border: 2px solid rgb(35, 32, 32);
+  }
+  th{
+      background-color: rgba(127, 133, 139, 0.39);}
+  td{
+      background-color: rgba(255, 255, 255, 0.789);
+  }
+  form{
+    
+    background-color: rgb(231, 255, 207);
+
+  }
+  .register-form{
+    background-color: rgba(193, 215, 251, 0.788);
+
+  }
+  .login-form{
+    background-color: rgba(244, 250, 165, 0.788);
+
+  }
+  .register-forms{
+    background-color: rgba(236, 202, 245, 0.788);
+  }
+  .login-forms{
+    background-color: rgba(215, 228, 255, 0.788);
+
+  }
