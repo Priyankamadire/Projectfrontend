@@ -1,232 +1,140 @@
-import React,{useState} from 'react'
-import { Outlet, Link, useNavigate  } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 const Postjob = () => {
-  const navigate = useNavigate();
-  const [admin,setUser]=useState({
-    instname:"",
-    postavailable:"",
-    qualification:"",
-    experience:"",
-    department:"",
-    date:""
-    
-  });
-  let name,value;
+    const navigate = useNavigate();
+    const [admin, setUser] = useState({
+        instname: "",
+        postavailable: "",
+        qualification: "",
+        experience: "",
+        department: "",
+        date: ""
+    });
 
-
-const handleInputs=(e) =>{
-console.log(e);
-name = e.target.name;
-value = e.target.value;
-setUser({...admin,[name]:value});
-}
-
-
-
-const PostData = async (e) => {
-  e.preventDefault();
-  const {instname,postavailable,qualification,experience,department,date}=admin;
-  const res = await fetch("postjob__" , {
-    method:"POST",
-    headers:{
-      "Content-Type" :"application/json"
-
-    },
-      body:JSON.stringify({
-        instname,postavailable,qualification,experience,department,date
-      })
-  });
-  const data = await res.json();
-  if(!instname||!postavailable||!qualification||!experience||!department||!date){
-      window.alert("please fill all the details");
-  }
- 
-    else{
-      window.alert("JOB POSTED SUCCESSFULLY");
-      console.log("JOB POSTED SUCCESSFULLY");
-      navigate('/');
+    const handleInputs = (e) => {
+        setUser({ ...admin, [e.target.name]: e.target.value });
     }
 
-}
-  
+    const PostData = async (e) => {
+        e.preventDefault();
+        const { instname, postavailable, qualification, experience, department, date } = admin;
+        if (!instname || !postavailable || !qualification || !experience || !department || !date) {
+            window.alert("Please fill all the details");
+        } else {
+            const res = await fetch("https://projectbackends.onrender.com/postjob__", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    instname,
+                    postavailable,
+                    qualification,
+                    experience,
+                    department,
+                    date
+                })
+            });
+            const data = await res.json();
+            window.alert("Job posted successfully");
+            navigate('/navbarsupad');
+        }
+    }
 
-  
-  return (
-    <div>
-      <>
-      
-      
-  <button
-    type="button"
-    className="btn btn-dark float-end bi bi-box-arrow-right"
-  >
-    <Link className="text-light" to="/sup_log">
-      LOGOUT
-    </Link>
-  </button>
-      <div className="offcanvas offcanvas-start" id="demo">
-    <div className="offcanvas-header">
-      <button type="button" className="btn-close" data-bs-dismiss="offcanvas" />
-    </div>
-    <div className="offcanvas-body">
-      <strong>
-        <pre />
-        <p> </p>
-        <pre />
-        <p />
-      </strong>
-      <ul>
-        <strong>
-          <li>
-            <Link className=" text-dark" to="/postjob">
-              POST A JOB
-            </Link><hr />
-
-          </li>
-          <li>
-            <Link className=" text-dark" to="/applications">
-              View applications
-            </Link><hr />
-
-      </li>
-        </strong>
-        <li>
-          <strong></strong>
-          <div className="container">
-            <strong></strong>
-            <div className="dropdown">
-              <strong></strong>
-               <button
-                type="button"
-                className="btn btn-default dropdown-toggle"
-                data-bs-toggle="dropdown"
-              >
-                <strong>
-                  <Link className="text-dark " to="/facdet">
-                    VIEW FACULTY DETAILS
-                  </Link>{" "}
-                </strong>
-              </button> 
-               <ul className="dropdown-menu">
-                <li>
-                  {" "}
-                  <Link className="dropdown-item text-dark" to="/facwork">
-                    WORKING FACULTY
-                  </Link>
-                </li>
-                <hr />
-                <li>
-                  {" "}
-                  <Link className="dropdown-item text-dark" to="/retai">
-                    RETIRED FACULTY
-                  </Link>
-                </li>
-                <hr />
-                <li>
-                  {" "}
-                  <Link className=" dropdown-item text-dark" to="/newfac">
-                    NEWLY JOINED FACULTY
-                  </Link>
-                </li>
-
-              </ul> 
-
-              </div>
-          </div>
-        </li>
-        <hr/>
-      </ul>
-    </div>
-  </div>
-  <div className="container-fluid mt-3">
-    <button
-      className=" btn btn-success bi bi-funnel"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#demo"
-    >
-      
-      <strong> 
-
-
-      FILTERS
-      </strong>
-    </button>
-  </div>
-
-  <br />
-  <div className="box" style={{ backgroundColor: "rgb(178, 255, 184)" }}>
-    <img className="float-end rounded-circle" src="https://www.betterteam.com/images/betterteam-job-posting-template-completed-800x800-2020127.jpeg?crop=1:1,smart&width=250&dpr=2" width="300px" />
-    <form method='POST'> 
-      <center>
-        <em>
-          <u>
-            <h1>POST A JOB</h1>
-          </u>
-        </em>
-      </center>
-      <p>
-        INSTITUTE NAME:{" "}
-        <input type="text" name="instname" id = "instname"    value={admin.instname}
-           onChange={handleInputs} placeholder="eg:kmit" />
-      </p>
-
-      <p>
-        POST AVAILABLE:{" "}
-        <input type="text"
-         name="postavailable"
-         id = "postavailable"    value={admin.postavailable}
-           onChange={handleInputs} placeholder="eg:pps lecturer" />
-      </p>
-      <p>
-        QUALIFICATION REQUIRED:{" "}
-        <input type="text" name="qualification"
-        id = "qualification"    value={admin.qualification}
-        onChange={handleInputs}
-         placeholder="eg:Mtech" />
-      </p>
-      <p>
-        EXPERIENCE REQUIRED:{" "}
-        <input type="text" name = "experience" id = "experience"  
-          value={admin.experience}
-           onChange={handleInputs} placeholder="eg:5 yrs" />
-      </p>
-      <p>
-        DEPARTMENT:{" "}
-        <input type="text" name="department" id = "department"  
-          value={admin.department}
-           onChange={handleInputs}
-           placeholder="eg:cse" />
-      </p>
-      <p>
-        LAST DAY TO APPLY :{" "}
-        <input type="date" name="date" id = "date"  
-          value={admin.date}
-           onChange={handleInputs} placeholder="eg:30" />
-      </p>
-      <center>
-        <button type="button submit"  
-        name = "signup" id="signup"
-        className="btn btn-secondary form-submit"
-        onClick={PostData} 
+    return (
+        <div>
+            
+            <div>
+        <button
+          type="button"
+          className="btn btn-dark float-end bi bi-box-arrow-right"
         >
-        
-            <h4>
-              <em>POST</em>
-            </h4>
-        
+          <Link className="text-light" to="/sup_log">LOGOUT</Link>
         </button>
-      </center>
-      <br />
-      <br />
-    </form>
-  </div>
-</>
-      <Outlet />
+        <div className="offcanvas offcanvas-start" id="demo">
+                <div className="offcanvas-header">
+                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" />
+                </div>
+                <div className="offcanvas-body">
+                    <ul>
+                        <li>
+                            <Link className="text-dark" to="/postjob">POST A JOB</Link>
+                            <hr />
+                        </li>
+                        <li>
+                            <Link className="text-dark" to="/applications">View applications</Link>
+                            <hr />
+                        </li>
+                      <li>
+                      <Link className="text-dark" to="/facwork">Working Faculty</Link>
+                            <hr />
+                      </li>
+                      <li>
+                      <Link className="text-dark" to="/retai">Retired Faculty</Link>
+                            <hr />
+                      </li>
+                      <li>
+                      <Link className="text-dark" to="/newfac">New Faculty</Link>
+                            <hr />
+                      </li>
 
-    </div>
-  )
-};
+                      
+                    </ul>
+                </div>
+            </div>
+            <div className="container-fluid mt-3">
+                <button className="btn btn-success bi bi-funnel" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                    <strong>FILTERS</strong>
+                </button>
+            </div>
+        </div>
+            <div className="container mt-5">
+                <div className="card mb-3">
+                    <div className="row g-0">
+                        <div className="col-md-8">
+                            <div className="card-body">
+                                <h2 className="card-title text-center mb-4">Post a Job</h2>
+                                <form onSubmit={PostData}>
+                                    <div className="mb-3">
+                                        <label htmlFor="instname" className="form-label">Institute Name</label>
+                                        <input type="text" className="form-control" id="instname" name="instname" value={admin.instname} onChange={handleInputs} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="postavailable" className="form-label">Post Available</label>
+                                        <input type="text" className="form-control" id="postavailable" name="postavailable" value={admin.postavailable} onChange={handleInputs} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="qualification" className="form-label">Qualification Required</label>
+                                        <input type="text" className="form-control" id="qualification" name="qualification" value={admin.qualification} onChange={handleInputs} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="experience" className="form-label">Experience Required</label>
+                                        <input type="text" className="form-control" id="experience" name="experience" value={admin.experience} onChange={handleInputs} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="department" className="form-label">Department</label>
+                                        <input type="text" className="form-control" id="department" name="department" value={admin.department} onChange={handleInputs} />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="date" className="form-label">Last Day to Apply</label>
+                                        <input type="date" className="form-control" id="date" name="date" value={admin.date} onChange={handleInputs} />
+                                    </div>
+                                    <div className="text-center">
+                                        <button type="submit" className="btn btn-primary">Post</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div className="col-md-4 d-flex align-items-center justify-content-center">
+                            <img src="https://www.glassdoor.com/employers/app/uploads/sites/2/2018/08/post-a-job-544449170.jpg" className="img-fluid rounded-start mx-auto d-block" alt="Card" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    )
+}
 
 export default Postjob;
-

@@ -1,34 +1,29 @@
-import React,{useEffect ,  useState} from 'react';
-import { Outlet, Link , useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import axios from 'axios';
 
-
 const Notification = () => {
-  const navigate = useNavigate();
-  const [products , setProducts] = useState("");
-  const [hires , setHires] = useState("");
+  const [products, setProducts] = useState([]);
+  const [hires, setHires] = useState([]);
 
- 
-useEffect(()=>{
-const fetchdata=async()=>{
-  const data = await axios.get('/jobavai');
-  const datan = await axios.get('/hiring');
-  console.log(data);
-  console.log(datan);
-  setProducts(data);
-  setHires(datan);
-};
-fetchdata();
-},[]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await axios.get('https://projectbackends.onrender.com/jobavai');
+        const datan = await axios.get('https://projectbackends.onrender.com/hiring');
+        setProducts(data.data);
+        setHires(datan.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
+    <>
     <div>
-        <>
-        {/* <button type="button" className="btn btn-primary  float-end bi bi-gear-wide">
-    <Link className="text-light" to="/sett">
-      Settings
-    </Link>
-  </button> */}
-  <button
+    <button
     type="button"
     className="btn btn-dark float-end bi bi-box-arrow-right"
   >
@@ -59,69 +54,33 @@ fetchdata();
     >
       FILTERS
     </button>
-  </div>
-  <center>
-    <h1>NOTIFICATIONS</h1>
-  </center>
-  <div className="box" style={{  backgroundColor: "rgb(286, 255, 196)"  }}>
-    
-   
-
-    {
-        products && products?.data.map((product)=>(
-         <>
-         <strong>
-     
-    </strong>
-          
-          <p> <i className="bi bi-bell-fill" />YOU HAVE A NEW FACULTY POST FROM  {product.instname} INSTITUTE. 
-          <Link to="/apply">Click here to apply</Link></p>
-          
-         </>
-        ))}
-  </div>
-  <div className="box" style={{  backgroundColor: "rgb(146, 245, 196)"  }}>
-    
-   
-
-    {
-        hires && hires?.data.map((notip)=>(
-         <>
-         <strong>
-     
-    </strong>
-          
-          <p> <i className="bi bi-bell-fill" />CONGRATULATIONS YOUR SUCCCESSFULLY SELECTED IN <strong>{notip.instname} </strong>INSTITUTE. FOR <strong>{notip.workingpost}</strong>  POST..
-          CHECK YOUR EMAIL FOR MORE DETAILS...
-         </p>
-          
-         </>
-        ))}
-
-    
-    
-   
-  </div>
-  <br />
-  {/* <div className="box" style={{ backgroundColor: "rgb(216, 255, 196)" }}>
-    <strong>
-      <i className="bi bi-bell-fill" />
-    </strong>
-    YOU HAVE A NEW FACULTY POST FROM NGIT INSTITUTE.
-    <a href="#">Click here to apply</a>
-  </div> */}
-  <br />
-  <br />
-  <img
-    className="float-end"
-    width="500px"
-    src="https://img.freepik.com/free-vector/push-notifications-concept-illustration_114360-4986.jpg?w=2000"
-  />
-</>
-      <Outlet />
-
     </div>
-  )
+    </div>
+    <div className="container mt-5">
+      <div className="row">
+        <div className="col-md-8">
+          <h1 className="mb-4">Notifications</h1>
+          <div>
+            {products.map((product, index) => (
+              <div key={index} className="alert alert-primary mb-3" role="alert">
+                <i className="bi bi-bell-fill me-2" />
+                You have a new faculty post from {product.instname} Institute.{' '}
+                <Link to="/apply">Click here to apply</Link>
+              </div>
+            ))}
+            
+          </div>
+        </div>
+        <div className="col-md-4">
+          <img
+            className="img-fluid"
+            src="https://img.freepik.com/free-vector/push-notifications-concept-illustration_114360-4986.jpg?w=2000"
+            alt="Push Notifications"
+          />
+        </div>
+      </div>
+    </div></>
+  );
 };
 
 export default Notification;

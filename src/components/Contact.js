@@ -1,78 +1,80 @@
-import React from 'react'
-import { Outlet, Link , useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from 'axios';
+import Footer from './Footer';
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Send POST request to backend
+      await axios.post('https://projectbackends.onrender.com/contact_', formData);
+
+      // Reset form fields after successful submission
+      setFormData({ name: '', email: '', message: '' });
+      alert('Message sent successfully!');
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Failed to send message. Please try again later.');
+    }
+  };
+
   return (
     <div>
-      <br/>
-      <center><em><h1>CONTACT DETAILS</h1></em></center>
-      <div className="box" style={{ backgroundColor: "rgb(452, 205, 196)" }}>
-  <strong>
-   <div >
-   <h3><em>CREATER OF THE PAGE</em></h3>
-   </div>
-  </strong>
-  <p >MADIRE PRIYANKA</p>
- 
-</div>
-<div className="box" style={{ backgroundColor: "rgb(222, 255, 196)" }}>
-  <strong>
-   <div >
-   <h3><em>CONTACT NUMBER</em></h3>
-   </div>
-  </strong>
-  <p >9392475862</p>
- 
-</div> <div className="box" style={{ backgroundColor: "rgb(155, 215, 196)" }}>
-  <strong>
-   <div >
-   <h3><em>EMAIL</em></h3>
-   </div>
-  </strong>
-  <p ><a href='#'>madirepriyanka01@gmail.com</a></p>
- 
-</div> <div className="box" style={{ backgroundColor: "rgb(222, 155, 206)" }}>
-  <strong>
-   <div >
-   <h3><em>RSEUME</em></h3>
-   </div>
-  </strong>
-  <p ><a href="https://priyankamadire.github.io/resume-with-html-css/">VIEW</a></p>
- 
-</div>
-
-<div className="box" style={{ backgroundColor: "rgb(422, 255, 196)" }}>
-  <strong>
-   <div >
-   <h3><em>GITHUB_LINK</em></h3>
-   </div>
-  </strong>
-  <p ><a href="https://github.com/Priyankamadire">VIEW</a></p>
- 
-</div>
-
+    <div className="contact-container">
+      <h2 className="contact-heading">Contact Us</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <label htmlFor="name">Your Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="email">Your Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="message">Your Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+        <button type="submit" className="btn">Send Message</button>
+      </form>
+<div>
      
-      {/* <table style={{ width: "100%" }} >
-        <tbody>
-        <tr>
-          <th></th>
-          <th>CONTACT NUMBER</th>
-          <th>EMAIL</th>
-          <th>RSEUME</th>
-          <th>GITHUB</th>
-        </tr>
-        <td>MADIRE PRIYANKA</td>
-        <td>9392475862</td>
-        <td><a href='#'>madirepriyanka01@gmail.com</a></td>
-        <td><a href="https://priyankamadire.github.io/resume-with-html-css/">RSEUME</a></td>
-        <td><a href ='https://github.com/Priyankamadire'>GIT</a></td>
-
-        </tbody>
-       
-       
-      </table> */}
+    </div> </div>
+    <Footer/>
+   
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

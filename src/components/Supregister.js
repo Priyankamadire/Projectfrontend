@@ -25,7 +25,7 @@ const Supregister = () => {
            const PostData = async (e) => {
             e.preventDefault();
             const {instname, email,  phone, instcode, password,  cpassword}=admin;
-            const res = await fetch("/supregister" , {
+            const res = await fetch("https://projectbackends.onrender.com/supregister" , {
               method:"POST",
               headers:{
                 "Content-Type" :"application/json"

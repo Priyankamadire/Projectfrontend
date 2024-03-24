@@ -42,8 +42,8 @@ import Supregister from './components/Supregister';
 import Profile from './components/Profile';
 import Supadna from './components/Supadna';
 import Faq from './components/Faq';
-
-
+import Abced from './components/Abced'
+// import Footer from './components/Footer';
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
 //   <React.StrictMode>
@@ -72,7 +72,7 @@ export default function App() {
 <Route path = "join" element={<Join/>}/>
  <Route path = "sup_log" element={<Supadlogin/>}/> 
 <Route path = "signin" element={<Signinlogin/>}/>
-
+<Route path = "abced" element={<Abced/>}/>
 
 <Route path = "profile" element={<Profile/>}/>
 <Route path = "supa" element={<Supadna/>}/>
@@ -95,7 +95,7 @@ export default function App() {
 <Route path = "cse" element={<Cse/>}/>
 <Route path = "csm" element={<Csm/>}/>
 <Route path = "sup_log" element={<Supadlogin/>}/>
-
+{/* <Route path = "footer" element={<Footer/>}/> */}
 <Route path = "csd" element={<Csd/>}/>
 <Route path = "it" element={<It/>}/>
 <Route path = "settings" element={<Settinst/>}/>
@@ -106,11 +106,18 @@ export default function App() {
 
 <Route path="*" element={<Error/>} />
         </Route>
-
       </Routes>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
 
+
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(<App />);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

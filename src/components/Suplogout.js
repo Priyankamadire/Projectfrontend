@@ -3,7 +3,7 @@ import { Outlet, Link ,useNavigate  } from "react-router-dom";
 const Suplogout = () => {
     const navigate = useNavigate();
     useEffect(()=>{
-        fetch('/slout',{
+        fetch('https://projectbackends.onrender.com/slout',{
             method:"GET",
             headers:{
                 Accept:"application/json",

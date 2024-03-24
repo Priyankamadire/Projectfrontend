@@ -25,7 +25,7 @@ setUser({...admin,[name]:value});
 const PostData = async (e) => {
   e.preventDefault();
   const {instname,workingpost}=admin;
-  const res = await fetch("hireop" , {
+  const res = await fetch("https://projectbackends.onrender.com/hireop" , {
     method:"POST",
     headers:{
       "Content-Type" :"application/json"

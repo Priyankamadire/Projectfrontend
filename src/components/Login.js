@@ -14,7 +14,7 @@ const [password , setPassword] = useState('');
   
 const loginUser = async (e) =>{
    e.preventtDefault();
-   const res = await fetch('/login',{
+   const res = await fetch('https://projectbackends.onrender.com/login',{
     method:"POST",
     headers:{
       "Content-Type" :"application/json"

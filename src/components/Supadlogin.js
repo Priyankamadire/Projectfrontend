@@ -1,179 +1,105 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Supadlogin = () => {
     const navigate = useNavigate();
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [instcode, setInstcode] = useState('');
 
+    const loginUser = async (e) => {
+        e.preventDefault();
+        // Your login logic here
+        const res = await fetch('https://projectbackends.onrender.com/suplogin', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                instcode,
+                password
+            })
+        });
 
-    const [email,setEmail] = useState('');
-    const [password , setPassword] = useState('');
-    const [instcode,setInstcode] = useState('');
-      
-    const loginUser = async (e) =>{
-       e.preventDefault();
-       const res = await fetch('/suplogin',{
-        method:"POST",
-        headers:{
-          "Content-Type" :"application/json"
-    
-        },
-        body:JSON.stringify({
-          email,
-          instcode,
-          password
-    
-        })
-         
-       });
-    
-       const data = await res.json();
-       
-window.localStorage.setItem("token",data.data);
+        const data = await res.json();
 
-window.localStorage.setItem("isLoggedIn_",true);
-       if(res.status === 411 ){
-        window.alert("FILL COMPLETE FORM TO REGISTER")
-       }
-       else if(res.status === 401){
-window.alert('Wrong password try again');
-       }
+        window.localStorage.setItem("token", data.data);
+        window.localStorage.setItem("isLoggedIn_", true);
 
-       else if(res.status === 406){
-        window.alert('invalid details try again');
-               }
-               
-
-       else{
-     {
-          window.alert("login successfull");
-          navigate('/navbarsupad');
+        if (res.status === 411) {
+            window.alert("FILL COMPLETE FORM TO REGISTER");
+        } else if (res.status === 401) {
+            window.alert('Wrong password try again');
+        } else if (res.status === 406) {
+            window.alert('Invalid details try again');
+        } else {
+            window.alert("Login successful");
+            navigate('/navbarsupad');
         }
-        
-    
-    
-       }
-    }
-    
-    
-    
-      return (
-        <div>
-          <>
-      <br />
-      <center>
-        <h1>LOGIN FOR INSTITUTE HEAD</h1>
-      </center>
-      {/* <section className='login'>
-            <div className='container mt-5'> */}
+    };
 
-              {/* <div className='loin-content'>
-                <h2 className='form-title'>Login</h2> */}
-                 <div className="container mt-3">
-  <div className="card" style={{ width: 400 }}>
+    return (
+        <div className="container mt-5 d-flex justify-content-center">
+            <div className="card" style={{ maxWidth: 400 }}>
+                <img className="card-img-top" src="http://collegesimply.imgix.net/primary/massachusetts-institute-of-technology-166683.jpg?auto=format,compress" alt="Card image cap" />
+                <div className="card-body">
+                    <h4 className="card-title">ADMIN LOGIN</h4>
+                    <form method='POST' className='login-forms' id='login-form'>
+                        <div className='form-group'>
+                            <label htmlFor="email">
+                                <h5><i className="fa fa-envelope-o" aria-hidden="true"></i></h5>
+                            </label>
+                            <input type="text" name="email" id="email" autoComplete='off'
+                                value={email}
+                                onClick={() => setEmail('kmit27@gmail.com')}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="form-control"
+                                placeholder='Institute email' />
+                        </div>
 
+                        <div className='form-group'>
+                            <label htmlFor="instcode">
+                                <h5><i className="fa fa-briefcase" aria-hidden="true" /></h5>
+                            </label>
+                            <input type="text" name="instcode" id="instcode" autoComplete='off'
+                                value={instcode}
+                                onClick={() => setInstcode('KMIT-2007')}
+                                onChange={(e) => setInstcode(e.target.value)}
+                                className="form-control"
+                                placeholder='Institute unique code' />
+                        </div>
 
-  <img className="card-img-top" src="https://tse3.mm.bing.net/th?id=OIP.F_oo-HIe743EBbgzBYyJ7gHaGN&pid=Api&P=0" width="100%" />
-  <div className="card-body">
-    <h4 className="card-title">LOGIN</h4>
-    <p className="card-text"></p>
-                <form  method='POST' className ='login-forms' id='login-form'>
-                  <br/>
-                  <div className='form-group'>
-                    <label htmlFor ="email">
-                      {/* <i className='bi bi-email-fill'></i> */}
-                      <h5>
-                      <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                        <div className='form-group'>
+                            <label htmlFor="password">
+                                <h5><i className="fa fa-key" aria-hidden="true"></i></h5>
+                            </label>
+                            <input type="password" name="password" id="password" autoComplete='off'
+                                value={password}
+                                onClick={() => setPassword('12345')}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="form-control"
+                                placeholder='Enter password' />
+                        </div>
 
-                      </h5><p></p>
-    
-                    </label>
-                    <input type="text" name = "email" id = "email" autoComplete='off'
-                    //  value={user.email}
-                    //  onChange={handleInputs}
-                        value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
-                                       placeholder='Your email'>
-                    </input>
-                  </div>
+                        <center>
+                            <button type="button" className='form-submit btn btn-success' onClick={loginUser}>
+                                <h6><em>Login</em></h6>
+                            </button>
+                        </center>
 
-                  <div className='form-group'>
-                        <label htmlFor ="instcode">
-                          {/* <i className='bi bi-person-fill'></i> */}
-                          <h5>
-                          <i className="fa fa-briefcase" aria-hidden="true" /></h5><p></p>
-                       </label>
-                        <input type="text" name = "instcode" id = "instcode" autoComplete='off'   
-                        value={instcode}
-                        // onChange={handleInputs}
-                    onChange={(e)=>setInstcode(e.target.value)}
-
-                         placeholder='Institute unique code '>
-                         </input>
-                      </div>
-
-                  <div className='form-group'>
-                    <label htmlFor ="password">
-                      <h5>
-                      <i className="fa fa-key" aria-hidden="true"></i>
-
-                      </h5>
-                      
-                    </label>
-                    <input type="password" name = "password" id = "password" autoComplete='off' 
-                    
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                     placeholder='Enter password'>
-                    </input>
-                  </div>
-                 
-    
-                  {/* <div className='form-group form-button'>
-                    <input type = "submit" name = "signin" id="signin" className='form-submit' value="login" 
-                    
-                    onClick={loginUser}
-                    ></input>
-                  </div>
-                  <br /><br/> */}
-
-
-                  <center>
-                  <button type="button submit" 
-              name = "signup" id="signup" className='form-submit btn btn-success'
-              onClick={loginUser} >
-                
-                <h6>
-                  <em>login</em>
-                </h6>
-
-              </button></center>
-           
-
-<div>
-  <h5>dost have a account click here</h5>
-<button type="button" className='btn btn-secondary'><Link  className='text-white' to ='/supad_regis'>SIGN UP</Link></button>
-
-</div>
-             
-             
-
-                 </form>
-              </div>
-              </div></div>
-            {/* 
-          </section> */}
-
-
-
-      <br /><br/>
-            <br/>
-            <br/>
-    </>
-          
-    
+                        {/* <div className="mt-3">
+                            <h5>Don't have an account? Click here</h5>
+                            <button type="button" className='btn btn-secondary'>
+                                <Link className='text-white' to='/supad_regis'>SIGN UP</Link>
+                            </button>
+                        </div> */}
+                    </form>
+                </div>
+            </div>
         </div>
-      )
+    );
 }
 
-export default Supadlogin
+export default Supadlogin;

@@ -1,164 +1,109 @@
-// import React from 'react'
-import React,{useState} from 'react'
-// import { Outlet, Link, json } from "react-router-dom";
-// import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-// import jwt from 'jsonwebtoken';
+
 const Signinlogin = () => {
-    const navigate = useNavigate();
-    const [email,setEmail] = useState('');
-    const [password , setPassword] = useState('');
-    const [remember, setRemember] = useState(false)
-// const [user, setUser] = useState()
-// const handleSubmit = async e => {
-  
-// };
-     
-    const loginUser = async (e) =>{
-       e.preventDefault();
-       const res = await fetch('/login',{
-        method:"POST",
-        headers:{
-          "Content-Type" :"application/json"
-    
-        },
-        body:JSON.stringify({
-          email,
-          password
-    
-        }),
-        
-         
-       });
-        
-       const data = await res.json();
-      
-window.localStorage.setItem("token",data.data);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [remember, setRemember] = useState(false);
 
-window.localStorage.setItem("isLoggedIn",true);
-       if(res.status === 400 ){
-        window.alert("Fill complete form to login");
-       }
-       else if(res.status === 412){
-        window.alert("password not matched enter correct password");
-       }
-       else if(res.status === 405){
-        window.alert("invalid details try again");
-       }
-       else{
-        window.alert("login successfull");
-          navigate('/lognav');
-       }
+  const loginUser = async (e) => {
+    e.preventDefault();
+    const res = await fetch('https://projectbackends.onrender.com/login', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email,
+        password
+      }),
+    });
+
+    const data = await res.json();
+
+    window.localStorage.setItem("token", data.data);
+    window.localStorage.setItem("isLoggedIn", true);
+
+    if (res.status === 400) {
+      window.alert("Fill complete form to login");
+    } else if (res.status === 412) {
+      window.alert("Password not matched. Enter correct password");
+    } else if (res.status === 405) {
+      window.alert("Invalid details. Try again");
+    } else {
+      window.alert("Login successful");
+      navigate('/lognav');
     }
-    
-    
-    
-      return (
-        <div>
-          <>
-      <br />
-      <center>
-        <h1>LOGIN  FOR PEOPLE WHO ARE LOOKING FOR A JOB</h1>
-      </center>
-      {/* <section className='login'>
-            <div className='container mt-5'> */}
-            <div className="container mt-3">
-  <div className="card" style={{ width: 400 }}>
+  }
 
-
-  <img className="card-img-top" src="https://static.vecteezy.com/system/resources/previews/000/518/208/original/man-working-with-computer-bright-colorful-vector-illustration.jpg" width="100%" />
-  <div className="card-body">
-    <h4 className="card-title">LOGIN</h4>
-    <p className="card-text"></p>
-  
-                <form  method='POST' className ='login-form' id='login-form' >
-                  
-                  <div className='form-group'>
-                    <br/>
-                    
-                    <label htmlFor ="email">
-                      {/* <i className='bi bi-email-fill'></i> */}
-                      <h5>Email:<i className="fa fa-envelope-o" aria-hidden="true"></i></h5>
-                      
-    <p></p>
-                    </label>
-                    <input type="text" name = "email" id = "email" autoComplete='off'
-                    //  value={user.email}
-                    //  onChange={handleInputs}
-                        value={email}
-                        onChange={(e)=>setEmail(e.target.value)}
-                                       placeholder='Your email'>
-                    </input>
-                  </div>
-                  <div className='form-group'>
-                    <label htmlFor ="password">
-                      <h5>
-                        Password
-                      <i className="fa fa-key" aria-hidden="true"></i>
-                      </h5>
-                      
-                      
-                    </label>
-                    <input type="password" name = "password" id = "password" autoComplete='off' 
-                    
-                    value={password}
-                    onChange={(e)=>setPassword(e.target.value)}
-                     placeholder='Enter password'
-                     >
-                    </input>
-                  </div>  
-                   {/* <br /> */}
-                   
-                   <div className="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" name="rememberme" value={remember} onChange={(e)=>setRemember(!remember)} /> remember me
-                        </label>
-                    </div>
-                  <div className='form-group form-button'>
-<center>
-                  <button type="button submit" 
-              name = "signup" id="signup" className='form-submit btn btn-success'
-              onClick={loginUser} >
-                
-                <h6>
-                  <em>login</em>
-                </h6>
-
-              </button></center>
-                    {/* <input type = "submit" name = "signin" id="signin" className='form-submit' value="login" 
-                    
-                    onClick={loginUser}
-                    ></input> */}
-                  </div>
-
-
-
-
-
-
-
-                  <div>
-  <h5>dost have a account click here </h5>
-<button type="button" className='btn btn-primary'><Link  className='text-white' to ='/register_'>SIGN UP</Link></button>
-
-</div>
-                </form>
-              </div>
-              
-
-
-              </div>
-</div>
-
-            {/* </div>
-          </section> */}
-            <br/>
-            <br/>
-    </>
-          
-    
+  return (
+    <div className="container mt-5">
+      <div className="card mx-auto" style={{ maxWidth: 400 }}>
+        <img className="card-img-top" src="https://static.vecteezy.com/system/resources/previews/000/518/208/original/man-working-with-computer-bright-colorful-vector-illustration.jpg" alt="Card" />
+        <div className="card-body">
+          <h4 className="card-title text-center">LOGIN</h4>
+          <form method='POST' className='login-form' id='login-form'>
+            <div className='form-group'>
+              <label htmlFor="email">
+                <h5>Email:</h5>
+              </label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                autoComplete='off'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-control"
+                placeholder="Your email"
+              />
+            </div>
+            <div className='form-group'>
+              <label htmlFor="password">
+                <h5>Password</h5>
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                autoComplete='off'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-control"
+                placeholder="Enter password"
+              />
+            </div>
+            <div className="form-check mb-3">
+              <input
+                type="checkbox"
+                name="rememberme"
+                checked={remember}
+                onChange={(e) => setRemember(!remember)}
+                className="form-check-input"
+                id="rememberme"
+              />
+              <label className="form-check-label" htmlFor="rememberme">Remember me</label>
+            </div>
+            <div className='form-group form-button text-center'>
+              <button
+                type="submit"
+                name="signup"
+                id="signup"
+                className="btn btn-success"
+                onClick={loginUser}
+              >
+                <h6><em>Login</em></h6>
+              </button>
+            </div>
+          </form>
+          <div className="text-center">
+            <h5>Don't have an account? <Link to="/register_" className="text-primary">Sign Up</Link></h5>
+          </div>
         </div>
-      )
+      </div>
+    </div>
+  );
 }
 
-export default Signinlogin
+export default Signinlogin;

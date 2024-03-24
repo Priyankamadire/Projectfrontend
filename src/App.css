@@ -48,7 +48,10 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  /* overflow-y: scroll; */
   }
+  
+  
   /* .notfound{
     background-image: url('https://img.freepik.com/free-vector/page-error-404-background_3338-15.jpg?size=338c&ext=jpg');
     background-repeat: no-repeat;
@@ -59,6 +62,58 @@ body{
   display: flex;
   align-items: center;
   
+}
+.contact-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 400px;
+  margin: auto; /* Center horizontally */
+  margin-top: 100px; /* Adjust as needed for vertical centering */
+}
+
+.contact-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
 }
 
 img {
@@ -147,4 +202,15 @@ tbody{
   .login-forms{
     background-color: rgba(215, 228, 255, 0.788);
 
+  }.btn-warning {
+    color: #ffffff;
+    background-color: #ffc107;
+    border-color: #ffc107;
   }
+  
+  .btn-warning:hover {
+    color: #ffffff;
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
+ 

@@ -1,66 +1,54 @@
-import React,{useState} from 'react'
-import { Outlet, Link ,useNavigate  } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 const Apply = () => {
   const navigate = useNavigate();
+  const [admin, setUser] = useState({
+    name: "",
+    date: "",
+    email: "",
+    phone: "",
+    postavailable: "",
+    qualification: "",
+    experience: "",
+    department: "",
+    github: ""
+  });
   
-
-  const [admin,setUser]=useState({
-    name:"",
-    date:"",
-    email:"",
-    phone:"",
-    postavailable:"",
-    qualification:"",
-    experience:"",
-    department:"",
-    github:""
-  });
-  let name,value;
-
-// /jobapply_
-
-const handleInputs=(e) =>{
-console.log(e);
-name = e.target.name;
-value = e.target.value;
-setUser({...admin,[name]:value});
-}
-
-
-
-const PostData = async (e) => {
-
-  e.preventDefault();
-  const {name,date,email,phone,postavailable,qualification,experience, department ,github}=admin;
-  const res = await fetch("/applypost" , {
-    method:"POST",
-    headers:{
-      "Content-Type" :"application/json"
-
-    },
-      body:JSON.stringify({
-        name,date,email,phone,postavailable,qualification,experience, department,github
-      })
-  });
-  const data = await res.json();
-  if(!name||!date||!email||!phone||!postavailable||!qualification||!experience||!department ||!github){
-      window.alert("please fill all th details");
+  const handleInputs = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...admin, [name]: value });
   }
 
-    else{
-      window.alert("Applied successfully");
-      console.log(" registeration successful");
-      navigate('/');
+  const PostData = async (e) => {
+    e.preventDefault();
+    const { name, date, email, phone, postavailable, qualification, experience, department, github } = admin;
+    if (!name || !date || !email || !phone || !postavailable || !qualification || !experience || !department || !github) {
+      window.alert("Please fill all the details.");
+      return;
     }
 
-}
+    const res = await fetch("https://projectbackends.onrender.com/applypost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name, date, email, phone, postavailable, qualification, experience, department, github
+      })
+    });
+    
+    if (res.status === 200) {
+      window.alert("Applied successfully");
+      navigate('/jobsavai');
+    } else {
+      window.alert("Something went wrong. Please try again.");
+    }
+  }
+
   return (
     <div>
-      
-
-      <>
-      
-  <button
+      <button
     type="button"
     className="btn btn-dark float-end bi bi-box-arrow-right"
   >
@@ -68,7 +56,6 @@ const PostData = async (e) => {
       LOGOUT
     </Link>
   </button>
-
   <div className="offcanvas offcanvas-start" id="demo">
     <div className="offcanvas-header">
       <button type="button" className="btn-close" data-bs-dismiss="offcanvas" />
@@ -92,97 +79,63 @@ const PostData = async (e) => {
     >
       FILTERS
     </button>
-  </div>
-  <br/>
-      <form method='POST'>
-      <center>
-        <em>
-          <u>
-            <h1>APPLY FOR JOB</h1>
-          </u>
-        </em>
-      </center>
-
-
-      <img className='float-end' src='https://www.cvexamplesword.com/wp-content/uploads/2021/05/applying-for-job.jpg' width='400px'></img>
-      <p>
-        NAME:{" "}
-        <input type="text" name="name" id = "name"    value={admin.name}
-           onChange={handleInputs} placeholder="eg:swati" />
-      </p>
-      <p>
-        ENTER YOUR DATE OF BIRTH:{" "}
-        <input type="date" name="date" id = "date"    value={admin.date}
-           onChange={handleInputs} placeholder="eg:10/10/10" />
-      </p>
-      <p>
-        EMAIL:{" "}
-        <input type="text" name="email" id = "email"    value={admin.email}
-           onChange={handleInputs} placeholder="eg:abc@gmail.com" />
-      </p>
-      <p>
-        PHONE:{" "}
-        <input type="number" name="phone" id = "phone"    value={admin.phone}
-           onChange={handleInputs} placeholder="eg:7845120369" />
-      </p>
-
-      <p>
-         APPLYING POST :{" "}
-        <input type="text"
-         name="postavailable"
-         id = "postavailable"    value={admin.postavailable}
-           onChange={handleInputs} placeholder="eg:pps lecturer" />
-      </p>
-
-
-      <p>
-         ENTER YOUR QUALIFICATION :{" "}
-        <input type="text" name="qualification"
-        id = "qualification"    value={admin.qualification}
-        onChange={handleInputs}
-         placeholder="eg:Mtech" />
-      </p>
-      <p>
-        ENTER YOUR WORK EXPERIENCE :{" "}
-        <input type="text" name = "experience" id = "experience"  
-          value={admin.experience}
-           onChange={handleInputs} placeholder="eg:5 yrs" />
-      </p>
-      <p>
-       WHICH DEPARTMENT YOU ARE RELATED :{" "}
-        <input type="text" name="department" id = "department"  
-          value={admin.department}
-           onChange={handleInputs}
-           placeholder="eg:cse" />
-      </p>
-      <p>
-       GITHUB_LINK:{" "}
-        <input type="url" name="github" id = "github"   placeholder="eg:http://github.com//raj" value={admin.github}
-           onChange={handleInputs} />
-      </p>
-      <center>
-        <button type="button submit"  
-        name = "signup" id="signup"
-        className="btn btn-secondary form-submit"
-        onClick={PostData} 
-        >
-        
-            <h4>
-              <em>APPLY</em>
-            </h4>
-        
-        </button>
-      </center>
-      <br />
-      <br />
-    </form>
-      
-      
-      
-      
-      </>
     </div>
-  )
+    <div className="container mt-5" >
+      <div className="card">
+        <div className="card-body">
+          <div className="row">
+            <div className="col-md-6">
+            <form onSubmit={PostData}>
+  <div className="mb-3">
+    <label htmlFor="name" className="form-label">Name:</label>
+    <input type="text" className="form-control" id="name" name="name" value={admin.name} onChange={handleInputs} />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="date" className="form-label">Date of Birth:</label>
+    <input type="date" className="form-control" id="date" name="date" value={admin.date} onChange={handleInputs} />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="email" className="form-label">Email:</label>
+    <input type="text" className="form-control" id="email" name="email" value={admin.email} onChange={handleInputs} />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="phone" className="form-label">Phone:</label>
+    <input type="number" className="form-control" id="phone" name="phone" value={admin.phone} onChange={handleInputs} />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="postavailable" className="form-label">Applying Post:</label>
+    <input type="text" className="form-control" id="postavailable" name="postavailable" value={admin.postavailable} onChange={handleInputs} />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="qualification" className="form-label">Qualification:</label>
+    <input type="text" className="form-control" id="qualification" name="qualification" value={admin.qualification} onChange={handleInputs} />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="experience" className="form-label">Experience:</label>
+    <input type="text" className="form-control" id="experience" name="experience" value={admin.experience} onChange={handleInputs} />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="department" className="form-label">Department:</label>
+    <input type="text" className="form-control" id="department" name="department" value={admin.department} onChange={handleInputs} />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="github" className="form-label">RESUME LINK:</label>
+    <input type="url" className="form-control" id="github" name="github" value={admin.github} onChange={handleInputs} />
+  </div>
+  <div className="text-center">
+    <button type="submit" className="btn btn-primary">Apply</button>
+  </div>
+</form>
+
+            </div>
+            <div className="col-md-6 d-flex align-items-center justify-content-center">
+              <img src="https://www.cvexamplesword.com/wp-content/uploads/2021/05/applying-for-job.jpg" className="img-fluid" alt="Apply for Job" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  );
 }
 
-export default Apply
+export default Apply;
