@@ -81,60 +81,65 @@ const Apply = () => {
       FILTERS
     </button>
     </div>
-    <div className="container mt-5" >
-      <div className="card">
-        <div className="card-body">
-          <div className="row">
-            <div className="col-md-6">
-            <form onSubmit={PostData}>
-  <div className="mb-3">
-    <label htmlFor="name" className="form-label">Name:</label>
-    <input type="text" className="form-control" id="name" name="name" value={admin.name} onChange={handleInputs} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="date" className="form-label">Date of Birth:</label>
-    <input type="date" className="form-control" id="date" name="date" value={admin.date} onChange={handleInputs} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="email" className="form-label">Email:</label>
-    <input type="text" className="form-control" id="email" name="email" value={admin.email} onChange={handleInputs} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="phone" className="form-label">Phone:</label>
-    <input type="number" className="form-control" id="phone" name="phone" value={admin.phone} onChange={handleInputs} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="postavailable" className="form-label">Applying Post:</label>
-    <input type="text" className="form-control" id="postavailable" name="postavailable" value={admin.postavailable} onChange={handleInputs} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="qualification" className="form-label">Qualification:</label>
-    <input type="text" className="form-control" id="qualification" name="qualification" value={admin.qualification} onChange={handleInputs} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="experience" className="form-label">Experience:</label>
-    <input type="text" className="form-control" id="experience" name="experience" value={admin.experience} onChange={handleInputs} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="department" className="form-label">Department:</label>
-    <input type="text" className="form-control" id="department" name="department" value={admin.department} onChange={handleInputs} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="github" className="form-label">RESUME LINK:</label>
-    <input type="url" className="form-control" id="github" name="github" value={admin.github} onChange={handleInputs} />
-  </div>
-  <div className="text-center">
-    <button type="submit" className="btn btn-primary">Apply</button>
-  </div>
-</form>
-
+    <div className="container mt-5">
+  <div className="card" style={{ backgroundColor: "#f0f8ff", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+    <div className="card-body">
+      <div className="row">
+        <div className="col-md-6">
+          <form onSubmit={PostData}>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">Name:</label>
+              <input type="text" className="form-control" id="name" name="name" value={admin.name} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
             </div>
-            <div className="col-md-6 d-flex align-items-center justify-content-center">
-              <img src="https://www.cvexamplesword.com/wp-content/uploads/2021/05/applying-for-job.jpg" className="img-fluid" alt="Apply for Job" />
+            <div className="mb-3">
+              <label htmlFor="date" className="form-label">Date of Birth:</label>
+              <input type="date" className="form-control" id="date" name="date" value={admin.date} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
             </div>
-          </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">Email:</label>
+              <input type="text" className="form-control" id="email" name="email" value={admin.email} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="phone" className="form-label">Phone:</label>
+              <input type="number" className="form-control" id="phone" name="phone" value={admin.phone} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="postavailable" className="form-label">Applying Post:</label>
+              <input type="text" className="form-control" id="postavailable" name="postavailable" value={admin.postavailable} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
+            </div>
+           
+          </form>
         </div>
-      </div></div>
+        <div className="col-md-6">
+
+          <form onSubmit={PostData}>
+          <div className="mb-3">
+              <label htmlFor="qualification" className="form-label">Qualification:</label>
+              <input type="text" className="form-control" id="qualification" name="qualification" value={admin.qualification} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="experience" className="form-label">Experience:</label>
+              <input type="text" className="form-control" id="experience" name="experience" value={admin.experience} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="department" className="form-label">Department:</label>
+              <input type="text" className="form-control" id="department" name="department" value={admin.department} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="github" className="form-label">RESUME LINK:</label>
+              <input type="url" className="form-control" id="github" name="github" value={admin.github} onChange={handleInputs} style={{ borderRadius: "5px", border: "1px solid #ced4da" }} />
+            </div>
+            <div className="text-center">
+              <button type="submit" className="btn btn-primary" style={{ width: "100%", padding: "10px", borderRadius: "5px", border: "none", backgroundColor: "#007bff", color: "#fff", fontWeight: "bold", cursor: "pointer" }}>Apply</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     </div></div>
   );
 }

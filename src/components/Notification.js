@@ -4,15 +4,12 @@ import axios from 'axios';
 
 const Notification = () => {
   const [products, setProducts] = useState([]);
-  const [hires, setHires] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await axios.get('https://projectbackends.onrender.com/jobavai');
-        const datan = await axios.get('https://projectbackends.onrender.com/hiring');
         setProducts(data.data);
-        setHires(datan.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -21,9 +18,8 @@ const Notification = () => {
   }, []);
 
   return (
-    <>
-    <div className='notif-scrool'>
-    <div>
+    <div className='notif-scroll'>
+      <div>
         <button
           type="button"
           className="btn btn-dark float-end bi bi-box-arrow-right"
@@ -55,35 +51,24 @@ const Notification = () => {
           >
             FILTERS
           </button>
+
         </div>
+        <br/>
       </div>
-      <br />
-      
- 
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-md-8">
-          <h1 className="mb-4">Notifications</h1>
-          <div>
-            {products.map((product, index) => (
-              <div key={index} className="alert alert-primary mb-3" role="alert">
-                <i className="bi bi-bell-fill me-2" />
-                You have a new faculty post from {product.instname} Institute.{' '}
-                <Link to="/apply">Click here to apply</Link>
-              </div>
-            ))}
-            
-          </div>
-        </div>
-        <div className="col-md-4">
-          <img
-            className="img-fluid"
-            src="https://img.freepik.com/free-vector/push-notifications-concept-illustration_114360-4986.jpg?w=2000"
-            alt="Push Notifications"
-          />
-        </div>
-      </div>   </div>
-    </div></>
+      <div className="col-md-12">
+  <div>
+    {products.map((product, index) => (
+      <div key={index} className="alert alert-primary mb-3" role="alert" style={{ backgroundColor: '#FFA500', color: '#ffffff' }}>
+        <i className="bi bi-bell-fill me-2" />
+        You have a new faculty post from {product.instname} Institute.{' '}
+        <Link to="/apply" style={{ color: '#ffffff' }}>Click here to apply</Link>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+    </div>
   );
 };
 

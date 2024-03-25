@@ -45,7 +45,7 @@ const Register = () => {
       navigate('/signin');
     }
   }
-
+// postjob__
   return (
     <div className="container mt-5">
       <div className="card">
