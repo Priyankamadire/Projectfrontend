@@ -51,7 +51,7 @@ nav{
   border-radius: 10px; /* Optional: Adds rounded corners to the scrollbar handle */
   width: 20px; /* Set the width of the scrollbar */
 } 
-.contact-scrool{
+/* .contact-scrool{
   height: 100%;
   overflow-y: auto;
 }
@@ -75,10 +75,7 @@ nav{
   height: 100%;
   overflow-y: auto;
 }
-.postjob-scrool {
-  height: 100%;
-  overflow-y: auto;
-}
+
 
 .apply-scrool{
   height: 100%;
@@ -111,7 +108,11 @@ nav{
 .suplogin-scrool{
   height: 100%;
   overflow-y: auto;
-}
+} 
+.postjob-scrool {
+  height: 100%;
+  overflow-y: auto;
+}*/
 body{
   
   background-image: url('https://img.freepik.com/free-vector/abstract-watercolor-pastel-background_87374-139.jpg?w=2000');
@@ -119,7 +120,7 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  height: 400vh;
+  height: 100vh;
   /* overflow-y: scroll; */
   /* overflow-y: scroll; */
   }
