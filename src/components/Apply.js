@@ -47,7 +47,8 @@ const Apply = () => {
   }
 
   return (
-    <div>
+    <div className='apply-scrool'>
+      <div>
       <button
     type="button"
     className="btn btn-dark float-end bi bi-box-arrow-right"
@@ -133,7 +134,7 @@ const Apply = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div></div>
     </div></div>
   );
 }

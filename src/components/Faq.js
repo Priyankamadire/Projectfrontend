@@ -3,7 +3,8 @@ import React from 'react'
 const Faq = () => {
   return (
 
-    <div>
+    <div className='faq-scrool'>
+      <div>
       <>
       <center><h1>MORE FREQUENTLY ASKED QUESTIONS</h1></center>
       <div className="box" style={{ backgroundColor: "rgb(222, 255, 196)" }}>
@@ -61,7 +62,7 @@ const Faq = () => {
  
 </div>
       
-      </>
+      </></div>
     </div>
   )
 }

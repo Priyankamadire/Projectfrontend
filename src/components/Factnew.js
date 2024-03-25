@@ -78,7 +78,8 @@ const Factnew = () => {
   }
 
   return (
-    <div>
+    <div className='facnew-scrool' >
+       <div>
       <br/>
         <div>
         <button
@@ -200,7 +201,7 @@ const Factnew = () => {
         <button type="submit" name="signup" id="signup" className='btn btn-secondary table-submit' onClick={PostData}>POST</button>
       </div>
       <Outlet />
-    </div>
+    </div></div>
   );
 };
 

@@ -38,9 +38,11 @@ const Supadlogin = () => {
             window.alert("Login successful");
             navigate('/navbarsupad');
         }
-    };
+    };  
 
     return (
+        <div className='suplogin-scrool' >
+            <div>
         <div className="container mt-5 d-flex justify-content-center">
             <div className="card" style={{ maxWidth: 400 }}>
                 <img className="card-img-top" src="http://collegesimply.imgix.net/primary/massachusetts-institute-of-technology-166683.jpg?auto=format,compress" alt="Card image cap" />
@@ -82,7 +84,7 @@ const Supadlogin = () => {
                                 className="form-control"
                                 placeholder='Enter password' />
                         </div>
-
+<br/>
                         <center>
                             <button type="button" className='form-submit btn btn-success' onClick={loginUser}>
                                 <h6><em>Login</em></h6>
@@ -97,8 +99,8 @@ const Supadlogin = () => {
                         </div> */}
                     </form>
                 </div>
-            </div>
-        </div>
+            </div></div>
+        </div></div>
     );
 }
 

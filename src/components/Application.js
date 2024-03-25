@@ -47,8 +47,9 @@ const Application = () => {
   });
 
   return (
-    <div>
+    <div className="application-scorooler">
       <>
+      <div>
         <br/>
         <div>
         <button
@@ -171,7 +172,7 @@ const Application = () => {
   </div>
 )}
 
-
+</div>
       </>
     </div>
   );

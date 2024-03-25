@@ -34,7 +34,7 @@ const   Vacancies = () => {
   });
 
   return (
-    <div>
+    <div className='vac-scrool'>
       
       <br />
       <div>

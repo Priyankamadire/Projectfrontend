@@ -43,9 +43,10 @@ const Postjob = () => {
     }
 
     return (
-        <div>
+        <div className='postjob-scrool'>
+    <div >
+    
             
-            <div>
         <button
           type="button"
           className="btn btn-dark float-end bi bi-box-arrow-right"

@@ -22,40 +22,44 @@ const Notification = () => {
 
   return (
     <>
+    <div className='notif-scrool'>
     <div>
-    <button
-    type="button"
-    className="btn btn-dark float-end bi bi-box-arrow-right"
-  >
-    <Link className="text-light" to="/signin">
-      LOGOUT
-    </Link>
-  </button>
-  <div className="offcanvas offcanvas-start" id="demo">
-    <div className="offcanvas-header">
-      <button type="button" className="btn-close" data-bs-dismiss="offcanvas" />
-    </div>
-    <div className="offcanvas-body">
-      <Link className="nav-link text-dark" to="/jobsavai">
-        <strong>JOBS AVAILABLE</strong>
-      </Link>
-      <hr />
-      <Link className="nav-link text-dark" to="/notif">
-        <strong>NOTIFICATIONS</strong>
-      </Link>
-    </div>
-  </div>
-  <div className="container-fluid mt-3">
-    <button
-      className="btn btn-primary bi bi-funnel"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#demo"
-    >
-      FILTERS
-    </button>
-    </div>
-    </div>
+        <button
+          type="button"
+          className="btn btn-dark float-end bi bi-box-arrow-right"
+        >
+          <Link className="text-light" to="/signin">
+            LOGOUT
+          </Link>
+        </button>
+        <div className="offcanvas offcanvas-start" id="demo">
+          <div className="offcanvas-header">
+            <button type="button" className="btn-close" data-bs-dismiss="offcanvas" />
+          </div>
+          <div className="offcanvas-body">
+            <Link className="nav-link text-dark" to="/jobsavai">
+              <strong>JOBS AVAILABLE</strong>
+            </Link>
+            <hr />
+            <Link className="nav-link text-dark" to="/notif">
+              <strong>NOTIFICATIONS</strong>
+            </Link>
+          </div>
+        </div>
+        <div className="container-fluid mt-3">
+          <button
+            className="btn btn-primary bi bi-funnel"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#demo"
+          >
+            FILTERS
+          </button>
+        </div>
+      </div>
+      <br />
+      
+ 
     <div className="container mt-5">
       <div className="row">
         <div className="col-md-8">
@@ -78,7 +82,7 @@ const Notification = () => {
             alt="Push Notifications"
           />
         </div>
-      </div>
+      </div>   </div>
     </div></>
   );
 };

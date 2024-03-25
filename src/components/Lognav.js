@@ -3,7 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 
 const Lognav = () => {
   return (
-    <div>
+    <div className='lognav-scrool'>
       <>
       
   <button

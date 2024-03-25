@@ -41,6 +41,77 @@ nav{
   overflow: hidden;
  
 }
+::-webkit-scrollbar-track {
+  background: #dddddd;
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #db1d5c;
+  border-radius: 10px; /* Optional: Adds rounded corners to the scrollbar handle */
+  width: 20px; /* Set the width of the scrollbar */
+} 
+.contact-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.lognav-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.application-scorooler {
+  height: 100%;
+  overflow-y: auto;
+}
+.about-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.navs-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.vac-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.postjob-scrool {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.apply-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.facwork-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.facret-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.facnew-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.faq-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.notif-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.jobsavai-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
+.suplogin-scrool{
+  height: 100%;
+  overflow-y: auto;
+}
 body{
   
   background-image: url('https://img.freepik.com/free-vector/abstract-watercolor-pastel-background_87374-139.jpg?w=2000');
@@ -48,6 +119,8 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  height: 400vh;
+  /* overflow-y: scroll; */
   /* overflow-y: scroll; */
   }
   

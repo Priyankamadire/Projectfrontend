@@ -30,7 +30,7 @@ const Contact = () => {
   };
 
   return (
-    <div>
+    <div className='contact-scrool'>
     <div className="contact-container">
       <h2 className="contact-heading">Contact Us</h2>
       <form onSubmit={handleSubmit}>

@@ -33,7 +33,8 @@ const Jobsavailable = () => {
   });
 
   return (
-    <div>
+    <div className='jobsavai-scrool'>
+      <div>
       <div>
         <button
           type="button"
@@ -110,7 +111,7 @@ const Jobsavailable = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </div></div>
     </div>
   )
 }

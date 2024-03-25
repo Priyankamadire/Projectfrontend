@@ -6,6 +6,8 @@ export default function About() {
   };
 
   return (
+    <>
+    <div className='about-scrool'>
     <div className="container py-5">
       <div className="row">
         <div className="col-lg-6">
@@ -37,7 +39,7 @@ export default function About() {
             Management can effortlessly post faculty job requirements and vacancies on our website. Additionally, management has access to view detailed faculty profiles.
           </p>
         </div>
-      </div>
-    </div>
+      </div></div>
+    </div></>
   );
 }

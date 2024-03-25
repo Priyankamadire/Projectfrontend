@@ -78,7 +78,8 @@ const Facretai = () => {
   }
 
   return (
-    <div>
+    <div className='facret-scrool'>
+      <div>
       <br/>
         <div>
         <button
@@ -200,7 +201,7 @@ const Facretai = () => {
         <button type="submit" name="signup" id="signup" className='btn btn-secondary table-submit' onClick={PostData}>POST</button>
       </div>
       <Outlet />
-    </div>
+    </div></div>
   );
 };
 

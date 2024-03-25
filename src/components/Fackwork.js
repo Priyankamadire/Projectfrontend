@@ -78,7 +78,8 @@ const Fackwork = () => {
   }
 
   return (
-    <div>
+    <div className='facwork-scrool'>
+      <div>
       <br/>
         <div>
         <button
@@ -200,7 +201,7 @@ const Fackwork = () => {
         <button type="submit" name="signup" id="signup" className='btn btn-secondary table-submit' onClick={PostData}>POST</button>
       </div>
       <Outlet />
-    </div>
+    </div></div>
   );
 };
 
